@@ -152,7 +152,7 @@ class DOSCGController extends AbstractActionController
         
         echo "<pre style=\"background-color: #f3f3f3; padding: 1em\"><small>"
         . show_source(__DIR__ . '/../View/Sources/bc.php', 1) . ""
-        . "Output<br/>Return : " . implode(array($b, $c), ", ")."</small></pre>";
+        . "Output<br/>Return : " . implode( ", ", array($b, $c))."</small></pre>";
         
         return ob_get_clean();
     }
@@ -184,7 +184,7 @@ class DOSCGController extends AbstractActionController
         
         echo "<pre style=\"background-color: #f3f3f3; padding: 1em\"><small>"
         . show_source(__DIR__ . '/../View/Sources/xyz.php', 1) . ""
-        . "Output<br/>Series number : " . implode($array, ", ")."</small></pre>";
+        . "Output<br/>Series number : " . implode(", ", $array)."</small></pre>";
         return ob_get_clean();
     }
 
