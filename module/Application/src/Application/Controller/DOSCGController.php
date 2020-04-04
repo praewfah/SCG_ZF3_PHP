@@ -117,29 +117,22 @@ class DOSCGController extends AbstractActionController
         //$channelSecret = '6a10fdc099372a28cad25444df6affc1';
 
         $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' . $ACCESS_TOKEN);
-
         $request = file_get_contents('php://input');   // Get request content
         $request_array = json_decode($request, true);   // Decode JSON to Array
 
-        if ((is_array($request_array['events']) || is_object($request_array['events'])) 
-                && sizeof($request_array['events']) > 0 ) {
-
+        if (isset($request_array['events']) && sizeof($request_array['events']) > 0 ) {
             foreach ($request_array['events'] as $event) {
-
-                $reply_message = '';
+                //$reply_message = '';
                 $reply_token = $event['replyToken'];
-
 
                 $data = [
                     'replyToken' => $reply_token,
                     'messages' => [['type' => 'text', 'text' => json_encode($request_array)]]
                 ];
                 $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
-
                 $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
 
                 echo "Result: ".$send_result."\r\n";
-
             }
         }
 
