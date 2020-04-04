@@ -1,14 +1,35 @@
 <?php $this->mainMenu()->setActiveItemId('line');?>
 
-<div class="card border-danger mb-12">
-    <div class="card-header"> 
-        <?php echo (isset($this->todo_api['line'])) ? $this->todo_api['line'] : ''; ?>
-        </div>
-    <div class="card-body text-danger">
-        <h5 class="card-title">Result : </h5>
-        <p class="card-text">
-            <?php echo $this->data; ?>
-        </p>
+<div class="row">
+    <div class="col-md-12">
+        <hr/>
+        The small project using Line messaging API for getting a notification when your Line Bot can not answer a question to the customer more than 10 second <bt/>
+        GIT URL : 
+        <a href="https://github.com/praewfah/bot-line" target="_blank">https://github.com/praewfah/bot-line</a>
+        <hr/>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-6 text-center">
+        <p class="font-weight-lighter"><b>Step 1 :</b> Add Chat bot "เลขมงคล"</p>
+        <img src="<?php echo $this->url('home'); ?>public/img/qr_code.png" class="rounded mx-auto d-block" alt="Scan me" width="200px">
+        <div class="mt-2">
+            <small class="font-weight-lighter">
+                Scan this QR code with LINE to add your LINE Official Account as a friend.
+            </small>
+        </div>
+    </div>
+
+    <div class="col-md-6 text-center">
+        <p class="font-weight-lighter"><b>Step 2 :</b> Add line group "กลุ่มเจ้าแม่"</p>
+        <img src="<?php echo $this->url('home'); ?>public/img/qr_code.png" class="rounded mx-auto d-block" alt="Scan me" width="200px">
+        <div class="font-weight-lighter mt-2">
+            <small class="font-weight-lighter">
+                Scan this QR code with LINE to add to group of notification.
+            </small>
+        </div>
+    </div>
+</div>
+
     
