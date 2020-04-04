@@ -112,32 +112,17 @@ class DOSCGController extends AbstractActionController
     
     public function lineAction() 
     {
-        $API_URL = 'https://api.line.me/v2/bot/message';
-        $ACCESS_TOKEN = 'ImA/O8DANkia3D92DOiVmgGSTJFm7eS8lBOYvvAtbWwDLtA+MldskioK35tHe/8zON9C2nY4mQGoyMA7TBho/UVEty89wzFUg/kRP07JOoBurzugod8HQrP7RyLCiOYo+IxS3U8t8z6slSgt1PRBSwdB04t89/1O/w1cDnyilFU='; 
-        //$channelSecret = '6a10fdc099372a28cad25444df6affc1';
-
-        $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' . $ACCESS_TOKEN);
-        $request = file_get_contents('php://input');   // Get request content
-        $request_array = json_decode($request, true);   // Decode JSON to Array
-
-        if (isset($request_array['events']) && sizeof($request_array['events']) > 0 ) {
-            foreach ($request_array['events'] as $event) {
-                //$reply_message = '';
-                $reply_token = $event['replyToken'];
-
-                $data = [
-                    'replyToken' => $reply_token,
-                    'messages' => [['type' => 'text', 'text' => json_encode($request_array)]]
-                ];
-                $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
-                $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
-
-                echo "Result: ".$send_result."\r\n";
-            }
+        try
+        {
+            $view = $this->basic();
+            $view->data = 'lineAction';
+            
+            return $view;
         }
-
-        echo "OK";
-        die();
+        catch( Exception $e )
+        {
+            print_r($e);
+        }
     }
     
     public function cvAction() 
@@ -182,7 +167,7 @@ class DOSCGController extends AbstractActionController
                 if (isset($array[($key-1)]) && is_string($array[($key-1)])) { 
                     echo $array[($key-1)];
                     $array[($key-1)] = $arr-(2*($key-1));
-                    echo ' = ' . $array[($key-1)].", ";
+                    echo ' = ' . $array[($key-1)]."<br/>";
                 } 
             } else {
                 echo $arr;
@@ -193,7 +178,7 @@ class DOSCGController extends AbstractActionController
                 } elseif (is_string($array[$key])) { // It's a nigntmare
                     $array[$key] = $array[($key+2)]+(2*($key-1));
                 }
-                echo ' = ' . $array[$key].", ";
+                echo ' = ' . $array[$key]."<br/>";
             }
         }
         

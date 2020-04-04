@@ -1,34 +1,40 @@
 <footer class="bd-footer">
-  <div class="container-fluid p-md-5">
-    <ul id="footer-menu" class="nav justify-content-md-center">
-        <li class="nav-item">
-            <a class="nav-link active" href="<?= $this->url('home') ?>">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?= $this->url('google') ?>">Google API</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?= $this->url('line') ?>">Line API</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?= $this->url('doscg', ['action'=>'api', 'id'=>'xyz']) ?>">Function xyz</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?= $this->url('doscg', ['action'=>'api', 'id'=>'bc']) ?>">Function bc</a>
-        </li>
-    </ul>
-    <div>
-        Designed and built by <a href="<?php echo $this->url('cv'); ?>">Aumaporn Tangmanosodsikul</a>, 
-        GIT URL 
-        <a href="https://github.com/praewfah/SCG_ZF3_PHP.git" target="_blank" rel="license noopener">
-            https://github.com/praewfah/SCG_ZF3_PHP.git
-        </a><br/>
-        References : 
-        <a href="https://github.com/Tonytoons/PHP-ZF3-Starter-Kit" target="_blank">
-            ZF3 Framework (PHP)
-        </a>
+    <div class="container-fluid p-md-5">
+        <ul id="footer-menu" class="nav justify-content-md-center">
+            <li class="nav-item">
+                <a class="nav-link active" href="<?= $this->url('home') ?>">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= $this->url('google') ?>">Google API</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= $this->url('line') ?>">Line API</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= $this->url('doscg', ['action'=>'api', 'id'=>'xyz']) ?>">Function xyz</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= $this->url('doscg', ['action'=>'api', 'id'=>'bc']) ?>">Function bc</a>
+            </li>
+        </ul>
+        <div class="justify-content-md-center">
+            <div>
+                Designed and built by <a href="<?php echo $this->url('cv'); ?>">Aumaporn Tangmanosodsikul</a>, 
+                References : 
+                <a href="https://github.com/Tonytoons/PHP-ZF3-Starter-Kit" target="_blank">ZF3 Framework (PHP)</a>, 
+                <a href="https://github.com/afifmakarim/bot-line-simple" target="_blank">Bot-line-simple</a>
+            </div>
+            <div>
+                GIT URL 
+                <a href="https://github.com/praewfah/SCG_ZF3_PHP.git" target="_blank" rel="license noopener">
+                    https://github.com/praewfah/SCG_ZF3_PHP.git
+                </a>, 
+                <a href="https://github.com/praewfah/bot-line.git" target="_blank" rel="license noopener">
+                    https://github.com/praewfah/SCG_ZF3_PHP.git
+                </a>
+            </div>
+        </div>
     </div>
-  </div>
 </footer>
 
 <input id="base_url" value="<?php echo $this->url('home'); ?>" type="hidden">
