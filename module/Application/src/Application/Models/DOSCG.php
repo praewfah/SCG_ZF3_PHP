@@ -10,6 +10,29 @@ use Zend\Cache\Storage\StorageInterface;
  
 class DOSCG
 { 
+    public static function todo_api() 
+    {
+        return array(
+            'model' => "Create a new controller and Model called \"DOSCG\"",
+            'xyz'   => "X, Y, 5, 9, 15, 23, Z - Please create a new function for finding X, Y, Z value",
+            'bc'    => "If A=21, A+B=23, A+C=-21 - Please create a new function for finding B and C value",
+            'google'=> "Please use \"Google API\" for finding the best way to go to Central World from SCG Bangsue",
+            'line'  => "Please create a small project using Line messaging API for getting "
+            . "a notification when your Line Bot can not answer a question to the customer more than 10 second"
+        );
+    }
+    
+    public static function todo_web() 
+    {
+        return array(
+            "Create a new router called \"DOSCG\"",
+            "Please use Bootstrap V4 for CSS",
+            "Please create Top bar, body, and footer for every page components",
+            "Please create a new page for showing results from your API (separate router by each API)",
+            "One simple static page for your CV"
+        );
+    }
+    
     public static function fileGetContents($filename, $use_include_path=false)
     {
         $timeout= 1800;

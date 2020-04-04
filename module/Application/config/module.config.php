@@ -18,7 +18,7 @@ return array(
                     'route'    => '/[:action][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id' => '[a-zA-Z][a-zA-Z0-9_-]*' //'[0-9_-]*[a-zA-Z0-9_-]*',
+                        'id' => '[a-zA-Z][a-zA-Z0-9_-]*'
                     ),
                     'defaults' => array(
                         'controller' => 'Application\Controller\DOSCG',
@@ -71,9 +71,6 @@ return array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
             'Zend\Log\LoggerAbstractServiceFactory',
         ),
-//        'factories' => array(
-//            'Zend\\Db\\Adapter\\Adapter' => 'Zend\\Db\\Adapter\\AdapterServiceFactory',
-//        ),
     ),
     'controllers' => array(
         'invokables' => array(
@@ -101,15 +98,6 @@ return array(
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
     ),
-//    'Db' => array(
-//        'driver' => 'Pdo',
-//        'dsn' => 'mysql:dbname=do_scg;host=localhost',   
-//        'driver_options' => array( 
-//            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
-//        ),
-//        'username' => 'root',
-//        'password' => 'root', 
-//    ),
     // The following registers our custom view 
     // helper classes in view plugin manager.
     'view_helpers' => array(

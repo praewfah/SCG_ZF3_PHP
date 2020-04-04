@@ -30,8 +30,8 @@ class DOSCGController extends AbstractActionController
         $view = new ViewModel();
         $view->action = $this->params()->fromRoute('action', 'index');
         $view->id = $this->params()->fromRoute('id', '');
-        $view->todo_api = $this->_todo_api();
-        $view->todo_web = $this->_todo_web();
+        $view->todo_api = DOSCG::todo_api();
+        $view->todo_web = DOSCG::todo_web();
         return $view;       
     } 
     
@@ -112,17 +112,39 @@ class DOSCGController extends AbstractActionController
     
     public function lineAction() 
     {
-        try
-        {
-            $view = $this->basic();
-            $view->data = 'lineAction';
-            
-            return $view;
+        $API_URL = 'https://api.line.me/v2/bot/message';
+        $ACCESS_TOKEN = 'ImA/O8DANkia3D92DOiVmgGSTJFm7eS8lBOYvvAtbWwDLtA+MldskioK35tHe/8zON9C2nY4mQGoyMA7TBho/UVEty89wzFUg/kRP07JOoBurzugod8HQrP7RyLCiOYo+IxS3U8t8z6slSgt1PRBSwdB04t89/1O/w1cDnyilFU='; 
+        //$channelSecret = '6a10fdc099372a28cad25444df6affc1';
+
+        $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' . $ACCESS_TOKEN);
+
+        $request = file_get_contents('php://input');   // Get request content
+        $request_array = json_decode($request, true);   // Decode JSON to Array
+
+        if ((is_array($request_array['events']) || is_object($request_array['events'])) 
+                && sizeof($request_array['events']) > 0 ) {
+
+            foreach ($request_array['events'] as $event) {
+
+                $reply_message = '';
+                $reply_token = $event['replyToken'];
+
+
+                $data = [
+                    'replyToken' => $reply_token,
+                    'messages' => [['type' => 'text', 'text' => json_encode($request_array)]]
+                ];
+                $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
+
+                $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
+
+                echo "Result: ".$send_result."\r\n";
+
+            }
         }
-        catch( Exception $e )
-        {
-            print_r($e);
-        }
+
+        echo "OK";
+        die();
     }
     
     public function cvAction() 
@@ -187,27 +209,18 @@ class DOSCGController extends AbstractActionController
         . "Output<br/>Series number : " . implode(", ", $array)."</small></pre>";
         return ob_get_clean();
     }
-
-    private function _todo_api() 
-    {
-        return array(
-            'model' => "Create a new controller and Model called \"DOSCG\"",
-            'xyz'   => "X, Y, 5, 9, 15, 23, Z - Please create a new function for finding X, Y, Z value",
-            'bc'    => "If A=21, A+B=23, A+C=-21 - Please create a new function for finding B and C value",
-            'google'=> "Please use \"Google API\" for finding the best way to go to Central World from SCG Bangsue",
-            'line'  => "Please create a small project using Line messaging API for getting "
-            . "a notification when your Line Bot can not answer a question to the customer more than 10 second"
-        );
-    }
     
-    private function _todo_web() 
+    function send_reply_message($url, $post_header, $post_body)
     {
-        return array(
-            "Create a new router called \"DOSCG\"",
-            "Please use Bootstrap V4 for CSS",
-            "Please create Top bar, body, and footer for every page components",
-            "Please create a new page for showing results from your API (separate router by each API)",
-            "One simple static page for your CV"
-        );
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $post_header);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_body);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        return $result;
     }
 }
