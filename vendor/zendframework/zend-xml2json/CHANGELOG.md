@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 3.1.2 - 2019-10-16
+
+### Added
+
+- [#10](https://github.com/zendframework/zend-xml2json/pull/10) adds support for PHP 7.3.
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
 ## 3.1.1 - 2018-04-30
 
 ### Added

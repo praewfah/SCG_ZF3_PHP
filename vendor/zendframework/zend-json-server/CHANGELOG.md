@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 3.2.0 - 2019-10-17
+
+### Added
+
+- [#14](https://github.com/zendframework/zend-json-server/pull/14) adds support for PHP 7.3.
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- [#14](https://github.com/zendframework/zend-json-server/pull/14) removes support for zend-stdlib v2 releases.
+
+### Fixed
+
+- Nothing.
+
 ## 3.1.0 - 2018-04-25
 
 ### Added

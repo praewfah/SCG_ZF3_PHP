@@ -1,20 +1,25 @@
 <?php
 try
 {  
-    set_time_limit(3600);
-    $contentHeader = ob_get_contents();
+    set_time_limit(1800);
+    
+    error_reporting(E_ALL|E_STRICT);
+    ini_set('display_errors', '1');
+    ini_set('memory_limit', '-1');
+    
+    date_default_timezone_set('Asia/Bangkok');
+    mb_internal_encoding("UTF-8");
+    
     header("Content-Type: text/html; charset=utf-8");
     header("cache-control: must-revalidate");
     $offset = 60 * 60;
     $expire = "expires: " . gmdate("D, d M Y H:i:s", time() + $offset) . " GMT";
     header($expire);
-    #header('Content-Length: ' . strlen($contentHeader));
     header('Vary: Accept-Encoding');
     header("Access-Control-Allow-Origin: *");
-    error_reporting(E_ALL|E_STRICT);
- 	ini_set('display_errors', '1');
-	date_default_timezone_set('Asia/Bangkok');
- 	mb_internal_encoding("UTF-8");
+    
+    define('CONFIG_PATH', dirname(__FILE__) . '/../module/Application/config/');
+    
     /**
      * This makes our life easier when dealing with paths. Everything is relative
      * to the application root now.
@@ -26,10 +31,10 @@ try
     }
     
     // Setup autoloading
-    require 'init_autoloader.php';
+    require_once dirname(__FILE__) . '/../init_autoloader.php';
     
     // Run the application!
-    Zend\Mvc\Application::init(require 'config/application.config.php')->run();
+    Zend\Mvc\Application::init(require_once dirname(__FILE__) . '/../config/application.config.php')->run();
 }
 catch (\Exception $e)
 {

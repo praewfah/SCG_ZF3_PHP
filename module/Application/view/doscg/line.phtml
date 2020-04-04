@@ -1,0 +1,14 @@
+<?php $this->mainMenu()->setActiveItemId('line');?>
+
+<div class="card border-danger mb-12">
+    <div class="card-header"> 
+        <?php echo (isset($this->todo_api['line'])) ? $this->todo_api['line'] : ''; ?>
+        </div>
+    <div class="card-body text-danger">
+        <h5 class="card-title">Result : </h5>
+        <p class="card-text">
+            <?php echo $this->data; ?>
+        </p>
+    </div>
+</div>
+    

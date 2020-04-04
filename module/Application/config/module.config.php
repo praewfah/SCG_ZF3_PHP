@@ -7,46 +7,63 @@ return array(
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
+                        'controller' => 'Application\Controller\DOSCG',
                         'action' => 'index',
                     ),
                 ),
             ),
-            'index' => array(
+            'doscg' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route'    => '/[:lang/[:action[/][:id/]]]',
+                    'route'    => '/[:action][/:id]',
                     'constraints' => array(
-                        'lang'   => '[a-zA-Z]*',
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id' => '[0-9_-]*[a-zA-Z0-9_-]*',
+                        'id' => '[a-zA-Z][a-zA-Z0-9_-]*' //'[0-9_-]*[a-zA-Z0-9_-]*',
                     ),
                     'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
+                        'controller' => 'Application\Controller\DOSCG',
                         'action' => 'index',
                         'id' => '',
-                        'lang' => 'th',
                     ),
                 ),
             ),
-            /*
-            'xxx' => array(
+            'google' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route'    => '/engine/[:lang/[:action[/][:id/]]]',
+                    'route'    => '/google[/:act]',
                     'constraints' => array(
-                        'lang'   => '[a-zA-Z]*',
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id' => '[0-9_-]*[a-zA-Z0-9_-]*',
                     ),
                     'defaults' => array(
-                        'controller' => 'Application\Controller\Xxx',
-                        'action' => 'index',
-                        'id' => '',
-                        'lang' => 'th',
+                        'controller' => 'Application\Controller\DOSCG',
+                        'action' => 'google',
                     ),
                 ),
-            ),*/
+            ),
+            'line' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route'    => '/line',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\DOSCG',
+                        'action' => 'line',
+                        'id' => '',
+                    ),
+                ),
+            ),
+            'cv' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route'    => '/cv',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\DOSCG',
+                        'action' => 'cv',
+                    ),
+                ),
+            ),
         ),
     ),
     'service_manager' => array(
@@ -54,40 +71,27 @@ return array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
             'Zend\Log\LoggerAbstractServiceFactory',
         ),
-        'aliases' => array(
-            'translator' => 'MvcTranslator',
-        ),
-    ),
-    'translator' => array(
-        'locale' => 'en_US',
-        'translation_file_patterns' => array(
-            array(
-                'type'     => 'gettext',
-                'base_dir' => __DIR__ . '/../language',
-                'pattern'  => '%s.mo',
-            ),
-        ),
+//        'factories' => array(
+//            'Zend\\Db\\Adapter\\Adapter' => 'Zend\\Db\\Adapter\\AdapterServiceFactory',
+//        ),
     ),
     'controllers' => array(
         'invokables' => array(
-            //add controller
-            'Application\Controller\Index' => 'Application\Controller\IndexController',
-            //'Application\Controller\Xxx' => 'Application\Controller\XxxController',
+            'Application\Controller\DOSCG' => 'Application\Controller\DOSCGController',
         ),
     ),
-     
     'view_manager' => array(
         'base_path' => '/',
         'doctype' => 'HTML5',
         'template_map' => array(
-            #index
-            'application/index/index' => __DIR__ . '/../view/index/index.phtml',
-            'application/index/user' => __DIR__ . '/../view/index/user.phtml',
-            #layout
-            'layout/layout' => __DIR__ . '/../view/layout/layout.phtml',
-			#404
-			'error/404'               => __DIR__ . '/../view/error/404.phtml',
-            'error/index'             => __DIR__ . '/../view/error/index.phtml',
+            'application/doscg/index'   => __DIR__ . '/../view/doscg/index.phtml',
+            'application/doscg/api'     => __DIR__ . '/../view/doscg/api.phtml',
+            'application/doscg/google'  => __DIR__ . '/../view/doscg/google.phtml',
+            'application/doscg/line'    => __DIR__ . '/../view/doscg/line.phtml',
+            'application/doscg/cv'      => __DIR__ . '/../view/doscg/cv.phtml',
+            'layout/layout'             => __DIR__ . '/../view/layout/layout.phtml',
+            'error/404'                 => __DIR__ . '/../view/error/404.phtml',
+            'error/index'               => __DIR__ . '/../view/error/index.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
@@ -96,44 +100,21 @@ return array(
         'display_exceptions'       => true,
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
-        /*
-        'strategies' => array(
-            'ViewJsonStrategy', // register JSON renderer strategy
-            'ViewFeedStrategy', // register Feed renderer strategy
-        ),*/
     ),
-    
-    // Placeholder for console routes
-    'console' => array(
-        'router' => array(
-            'routes' => array(
-            ),
-        ),
-    ),
-    //DB
-    //'Zend\Db'
-    /*
-    'Db' => array(
-        'driver' => 'Pdo',
-        'dsn' => 'mysql:dbname=xxxx;host=xxxx.xxxx.ap-southeast-1.rds.amazonaws.com',   
-        'driver_options' => array( 
-            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
-        ),
-        'username' => 'xxxx',
-        'password' => 'xxxx', 
-    ),
-    */
-    'service_manager' => array( 
-        'factories' => array(
-            'translator' => 'Zend\\I18n\\Translator\\TranslatorServiceFactory',
-            'Zend\\Db\\Adapter\\Adapter' => 'Zend\\Db\\Adapter\\AdapterServiceFactory',
-        ),
-        'abstract_factories' => [
-        \Zend\Db\Adapter\AdapterAbstractServiceFactory::class,
-        ],
-    ),
-    'language' => array(    
-        '1' =>['code'=>'en','name'=>'English','label'=>'English'],   
-        '2' =>['code'=>'th','name'=>'Thai','label'=>'ภาษาไทย'],
-    ),
+//    'Db' => array(
+//        'driver' => 'Pdo',
+//        'dsn' => 'mysql:dbname=do_scg;host=localhost',   
+//        'driver_options' => array( 
+//            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
+//        ),
+//        'username' => 'root',
+//        'password' => 'root', 
+//    ),
+    // The following registers our custom view 
+    // helper classes in view plugin manager.
+    'view_helpers' => array(
+        'invokables' => array(
+            'mainMenu' => 'Application\View\Helper\Menu',
+        )
+    ),   
 ); 

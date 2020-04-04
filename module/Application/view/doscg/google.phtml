@@ -1,0 +1,72 @@
+<?php $this->mainMenu()->setActiveItemId('google');?>
+
+<div class="row justify-content-md-center">
+    <div class="col-md-8 mt-2">
+        <div class="bg-light p-md-4">
+        <form @submit="formSubmit" id="googlemapsearch">
+            <div class="form-row">
+                <div class="form-group">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="mode1" v-model="mode" class="custom-control-input" checked value="driving">
+                        <label class="custom-control-label" for="mode1">
+                            <img width="20px" height="20px" src="<?php echo $this->url('home'); ?>img/icon/car.png" />
+                        </label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="mode2" v-model="mode" class="custom-control-input" value="walking">
+                        <label class="custom-control-label" for="mode2">
+                            <img width="20px" height="20px" src="<?php echo $this->url('home'); ?>img/icon/run.png" />
+                        </label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="mode3" v-model="mode" class="custom-control-input" value="bicycling">
+                        <label class="custom-control-label" for="mode3">
+                            <img width="20px" height="20px" src="<?php echo $this->url('home'); ?>img/icon/bike.png" />
+                        </label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="mode4" v-model="mode" class="custom-control-input" value="transit">
+                        <label class="custom-control-label" for="mode4">
+                            <img width="20px" height="20px" src="<?php echo $this->url('home'); ?>img/icon/train.png" />
+                        </label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="mode5" v-model="mode" class="custom-control-input" value="flying">
+                        <label class="custom-control-label" for="mode5">
+                            <img width="20px" height="20px" src="<?php echo $this->url('home'); ?>img/icon/plane.png" />
+                        </label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox custom-control-inline">
+                        <input type="checkbox" class="custom-control-input" id="avoid" v-model="avoid">
+                        <label class="custom-control-label" for="avoid">Avoid tolls, ferries and highways</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-5">
+                    <input type="text" class="form-control" placeholder="Start" v-model="from">
+                </div>
+                <div class="col-md-5">
+                    <input type="text" class="form-control" placeholder="Destination" v-model="to">
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary">GO</button>
+                </div>
+            </div>
+
+        </form>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-md-center">
+    <div class="col-md-8 mt-2">
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe id="doscg-google-map" class="embed-responsive-item" src="<?php echo $this->data; ?>" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+    
+
+    

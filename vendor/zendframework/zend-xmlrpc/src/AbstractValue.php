@@ -44,6 +44,14 @@ abstract class AbstractValue
     protected $xml;
 
     /**
+     * True if BigInteger should be used for XMLRPC i8 types
+     *
+     * @internal
+     * @var bool
+     */
+    public static $USE_BIGINT_FOR_I8 = PHP_INT_SIZE < 8;
+
+    /**
      * @var \Zend\XmlRpc\Generator\GeneratorInterface
      */
     protected static $generator;
@@ -193,7 +201,7 @@ abstract class AbstractValue
             case self::XMLRPC_TYPE_I8:
                 // fall through to the next case
             case self::XMLRPC_TYPE_APACHEI8:
-                return new Value\BigInteger($value);
+                return self::$USE_BIGINT_FOR_I8 ? new Value\BigInteger($value) : new Value\Integer($value);
 
             case self::XMLRPC_TYPE_DOUBLE:
                 return new Value\Double($value);
@@ -337,7 +345,7 @@ abstract class AbstractValue
             case self::XMLRPC_TYPE_APACHEI8:
                 // Fall through to the next case
             case self::XMLRPC_TYPE_I8:
-                $xmlrpcValue = new Value\BigInteger($value);
+                $xmlrpcValue = self::$USE_BIGINT_FOR_I8 ? new Value\BigInteger($value) : new Value\Integer($value);
                 break;
             case self::XMLRPC_TYPE_DOUBLE:
                 $xmlrpcValue = new Value\Double($value);

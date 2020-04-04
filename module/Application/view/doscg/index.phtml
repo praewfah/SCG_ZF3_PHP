@@ -1,0 +1,41 @@
+<?php $this->mainMenu()->setActiveItemId('home'); ?>
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-api-tab" data-toggle="tab" href="#nav-api" role="tab" aria-controls="nav-api" aria-selected="true">Assignment 1</a>
+    <a class="nav-item nav-link" id="nav-web-tab" data-toggle="tab" href="#nav-web" role="tab" aria-controls="nav-web" aria-selected="false">Assignment 2</a>
+  </div>
+</nav>
+
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-api" role="tabpanel" aria-labelledby="nav-api-tab">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h4>API (Back-end)</h4>
+                References : 
+                <a href="https://github.com/Tonytoons/PHP-ZF3-Starter-Kit" target="_blank">ZF3 Framework (PHP)</a>
+                <ol class="mt-2">
+                    <?php foreach ($this->todo_api as $todo) {?>
+                        <li><?php echo $todo; ?></li>
+                    <?php } ?>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="nav-web" role="tabpanel" aria-labelledby="nav-web-tab">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h4>WEB (front-end)</h4>
+                <p>Vue.JS V3 and Bootstrap V4</p>
+                <ol>
+                    <?php foreach ($this->todo_web as $todo) {?>
+                        <li><?php echo $todo; ?></li>
+                    <?php } ?>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

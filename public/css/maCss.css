@@ -1,0 +1,17 @@
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+    display: block;
+}
+.bd-footer {
+    font-size: .775rem;
+    text-align: center;
+    color: #6c757d!important;
+}
+#footer-menu li a.nav-link{
+    color: #95999c;
+}
+#footer-menu li a.nav-link:hover{
+    color: #454d55;
+}
+#footer-menu li a.nav-link:first-child{
+    padding-left: 0px;
+}
