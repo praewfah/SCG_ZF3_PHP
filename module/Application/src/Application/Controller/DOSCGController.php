@@ -144,11 +144,16 @@ class DOSCGController extends AbstractActionController
     {
         ob_start();
         $a = 21;
-        $ab = 23;
-        $ac = -21;
+        $b = null;
+        $c = null;
         
-        echo "B = " . $b = ($ab+-$a) ;
-        echo "<br/>C = " . $c = ($ac+-$a) ;
+        $ab = 23;       // A+B = 23
+        $ac = -21;      // A+C = -21
+        $b = ($ab-$a);  // B = 23 - 21
+        $c = ($ac-$a);  // C = -21 - 21
+        
+        echo "B = " . $b ;
+        echo "<br/>C = " . $c ;
         
         echo "<pre style=\"background-color: #f3f3f3; padding: 1em\"><small>"
         . show_source(__DIR__ . '/../View/Sources/bc.php', 1) . ""

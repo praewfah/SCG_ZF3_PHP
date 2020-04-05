@@ -1,7 +1,13 @@
 <?php $this->mainMenu()->setActiveItemId('google');?>
 
+<div class="row text-center">
+    <div class="col-md-12 small">
+        Assignment : <?= $this->todo_api['google']; ?><br/>  
+    </div>
+</div><hr/>
+
 <div class="row justify-content-md-center">
-    <div class="col-md-8 mt-2">
+    <div class="col-md-10">
         <div class="bg-light p-md-4">
         <form @submit="formSubmit" id="googlemapsearch">
             <div class="form-row">
@@ -36,7 +42,6 @@
                             <img width="20px" height="20px" src="<?php echo $this->url('home'); ?>public/img/icon/plane.png" />
                         </label>
                     </div>
-
                     <div class="custom-control custom-checkbox custom-control-inline">
                         <input type="checkbox" class="custom-control-input" id="avoid" v-model="avoid">
                         <label class="custom-control-label" for="avoid">Avoid tolls, ferries and highways</label>
@@ -61,7 +66,7 @@
 </div>
 
 <div class="row justify-content-md-center">
-    <div class="col-md-8 mt-2">
+    <div class="col-md-10 mt-2">
         <div class="embed-responsive embed-responsive-16by9">
             <iframe id="doscg-google-map" class="embed-responsive-item" src="<?php echo $this->data; ?>" allowfullscreen></iframe>
         </div>
