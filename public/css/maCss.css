@@ -15,3 +15,6 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 #footer-menu li a.nav-link:first-child{
     padding-left: 0px;
 }
+.text-content{
+    font-size: 14px;
+}
