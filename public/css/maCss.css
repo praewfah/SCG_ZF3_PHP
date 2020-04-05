@@ -12,6 +12,3 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 #footer-menu li a.nav-link:hover{
     color: #454d55;
 }
-#footer-menu li a.nav-link:first-child{
-    padding-left: 0px;
-}
