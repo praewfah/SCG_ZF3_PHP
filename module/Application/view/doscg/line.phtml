@@ -6,78 +6,183 @@
     </div>
 </div><hr/>
 
-<div class="row p-3 justify-content-lg-center">
-    <div class="col-md-3 text-center mb-3">
-        <div id="lineSlide" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#ex1" data-slide-to="0" class="active"></li>
-                <li data-target="#ex2" data-slide-to="1"></li>
-                <li data-target="#ex3" data-slide-to="2"></li>
-                <li data-target="#ex4" data-slide-to="3"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="<?php echo $this->url('home'); ?>public/img/line-screen-short/add-1.png" class="d-block w-100">
-                </div>
-                <div class="carousel-item">
-                  <img src="<?php echo $this->url('home'); ?>public/img/line-screen-short/add-2.png" class="d-block w-100">
-                </div>
-                <div class="carousel-item">
-                  <img src="<?php echo $this->url('home'); ?>public/img/line-screen-short/add-3.png" class="d-block w-100">
-                </div>
-                <div class="carousel-item">
-                  <img src="<?php echo $this->url('home'); ?>public/img/line-screen-short/noti.png" class="d-block w-100">
-                </div>
-              </div>
-              <a class="carousel-control-prev" href="#lineSlide" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#lineSlide" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
-        </div>
-    </div><!--slide-->
+<div class="row justify-content-md-center">
     
-    <div class="col-md-6">
-        <div class="pb-3 text-content">
-            <p>GIT URL : 
+    <div class="col-md-12">
+        <div class="pb-3 text-content text-center">
+            <p class="text-left">GIT URL : 
                 <a href="https://github.com/praewfah/bot-line" target="_blank">https://github.com/praewfah/bot-line</a>
             </p>
-            <p>Please see the result on the slide show</p>
-            <ul class="">
-                <li>My chat Line Bot's name "เลขมงคล"</li>
-                <li>After add fried to "เลขมงคล", you can chat with the Line Bot</li>
-                <li>When the Line Bot can not answer a question to the customer more than 10 second, 
-                    the line group "Notification เลขมงคล" will getting a notification</li>
-            </ul>
-        </div>
-        <div class="card mb-3">
-            <div class="row no-gutters">
-                <div class="col-md-3">
-                    <img src="<?php echo $this->url('home'); ?>public/img/qr_code.png" class="card-img" alt="Scan me!">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title font-weight-lighter">QR code for chat bot "เลขมงคล"</h5>
-                        <p class="card-text small">Scan this QR code with LINE to add LINE Official Account as a friend.</p>
+            
+            <div class="row row-cols-1 row-cols-md-1 row-cols-lg-3">
+                <div class="col mb-4">
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-lg-6">
+                                <div class="card-body">
+                                    <p class="card-text text-left">My chat Line Bot's name "เลขมงคล"</p><hr/>
+                                    <p class="card-text text-left small">Scan QR code to add friend</p>
+                                    <img src="<?php echo $this->url('home'); ?>public/img/qr_code.png" width="80px" alt="Scan me!">
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 p-3">
+                                <a  data-toggle="modal" data-target="#line1" href="#">
+                                    <img src="<?php echo $this->url('home'); ?>public/img/line/line-1.png" width="150px">
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="card mb-3">
-            <div class="row no-gutters">
-                <div class="col-md-3">
-                    <img src="<?php echo $this->url('home'); ?>public/img/line_notification.jpg" class="card-img" alt="Try me!">
+                <div class="col mb-4">
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-lg-6">
+                                <div class="card-body">
+                                    <p class="card-text text-left">
+                                        After add fried to "เลขมงคล", you can chat with the Line Bot
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 p-3">
+                                <a  data-toggle="modal" data-target="#line2" href="#">
+                                    <img src="<?php echo $this->url('home'); ?>public/img/line/line-2.png" width="150px">
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title font-weight-lighter">QR code for "Notification เลขมงคล"</h5>
-                        <p class="card-text small">Scan this QR code with LINE to add to group of notification.</p>
+                <div class="col mb-4">
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-lg-6">
+                                <div class="card-body">
+                                    <p class="card-text text-left">
+                                        Start chat with Line Bot
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 p-3">
+                                <a  data-toggle="modal" data-target="#line3" href="#">
+                                    <img src="<?php echo $this->url('home'); ?>public/img/line/line-3.png" width="150px">
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-4">
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-lg-6">
+                                <div class="card-body">
+                                    <p class="card-text text-left">
+                                       Ask a question "วันนี้ฝนจะตกมั้ย"
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 p-3">
+                                <a  data-toggle="modal" data-target="#line4" href="#">
+                                    <img src="<?php echo $this->url('home'); ?>public/img/line/line-4.png" width="150px">
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-4">
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-lg-6">
+                                <div class="card-body">
+                                    <p class="card-text text-left">
+                                        Line Bot can't answer a question, so the alert message send to <i>"Notification เลขมงคล"</i>
+                                    </p><hr/>
+                                    <p class="card-text text-left small">Scan QR code to add "Notification เลขมงคล" group</p>
+                                    <img src="<?php echo $this->url('home'); ?>public/img/line_notification.jpg" width="80px" alt="Scan me!">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 p-3">
+                                <a  data-toggle="modal" data-target="#line5" href="#">
+                                    <img src="<?php echo $this->url('home'); ?>public/img/line/line-5.png" width="150px">
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-4">
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-lg-6">
+                                <div class="card-body">
+                                    <p class="card-text text-left">
+                                        Ask a question "ซื้อเลขอะไรดี" 
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 p-3">
+                                <a  data-toggle="modal" data-target="#line6" href="#">
+                                    <img src="<?php echo $this->url('home'); ?>public/img/line/line-6.png" width="150px">
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-4">
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-lg-6">
+                                <div class="card-body">
+                                    <p class="card-text text-left">
+                                        Line Bot can answer a question but took time more than 10 minutes
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 p-3">
+                                <a  data-toggle="modal" data-target="#line7" href="#">
+                                    <img src="<?php echo $this->url('home'); ?>public/img/line/line-7.png" width="150px">
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-4">
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-lg-6">
+                                <div class="card-body">
+                                    <p class="card-text text-left">
+                                        <i>"Notification เลขมงคล"</i> will getting the alert message too    
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 p-3">
+                                <a  data-toggle="modal" data-target="#line8" href="#">
+                                    <img src="<?php echo $this->url('home'); ?>public/img/line/line-8.png" width="150px">
+                                </a>
+                            </div>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<?php for ($i=1; $i<=8; $i++) { ?>
+<div class="modal fade" id="line<?=$i?>" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="row">
+        <div class="col-md-12">
+            <img src="<?php echo $this->url('home'); ?>public/img/line/line-<?=$i?>.png" height="600px">
+        </div>
+    </div>
+  </div>
+</div>
+<?php } ?>
